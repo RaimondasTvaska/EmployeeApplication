@@ -1,0 +1,49 @@
+<!-- <p>{{title}} <code>ngFor</code></p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Vardas</th>
+    <th scope="col">Pavardė</th>
+    <th scope="col">Genderis</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let employee of employees,index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+      {{ country.name }}
+    </td>
+    <td>{{ employee.firstName }}</td>
+    <td>{{ employee.lastName }}</td>
+    <td>{{ employee.gender }}</td>
+  </tr>
+  </tbody>
+</table>
+
+Vardukas
+<input type="text" [(ngModel)]="firstName" /> 
+Pavardukas
+<input type="text" [(ngModel)]="lastName" />
+Genderiukas
+<input type="text" [(ngModel)]="gender" />  
+
+<button (click)="addEmployee()">Add</button> -->
+
+<p>{{title}}</p>
+
+<ul>
+    <li *ngFor = "let employee of employees">
+        Vardas: {{employee.firstName}} Pavardė: {{employee.lastName}}
+    </li>
+</ul>
+
+
+Vardukas
+<input type="text" [(ngModel)]="firstName" /> 
+Pavardukas
+<input type="text" [(ngModel)]="lastName" />
+ 
+
+<button (click)="addEmployee()">Add</button>
