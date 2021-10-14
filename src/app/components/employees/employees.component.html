@@ -1,37 +1,42 @@
-<!-- <p>{{title}} <code>ngFor</code></p>
+<div>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="">Add new employee</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Vardas" [(ngModel)]="firstName">
+    <input type="text" class="form-control" placeholder="Pavardė" [(ngModel)]="lastName">
+    <select [(ngModel)]="genderType">
+      <option value="0">Male</option>
+      <option value="1">Female</option>
+      <option value="2">Unspecified</option>
+    </select>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">Vardas</th>
-    <th scope="col">Pavardė</th>
-    <th scope="col">Genderis</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let employee of employees,index as i">
-    <th scope="row">{{ i + 1 }}</th>
-    <td>
-      <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
-      {{ country.name }}
-    </td>
-    <td>{{ employee.firstName }}</td>
-    <td>{{ employee.lastName }}</td>
-    <td>{{ employee.gender }}</td>
-  </tr>
-  </tbody>
-</table>
+    <button type="button" class="btn btn-dark" (click)="addEmployee()">Naujas</button>
+  </div>
+</div>
+<div>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th>Vardukas</th>
+        <th>Pavardukas</th>
+        <th>Gender tipas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor = "let employee of employees">
+        <td class="bg-info">{{employee.firstName}}</td>
+        <td class="bg-success">{{employee.lastName}}</td>
+        <td class="bg-success">{{employee.genderType}}</td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button></td>
+        <td><button type="button" class="btn btn-warning" (click)="updateEmployee(employee.id)">Update</button></td>
+      </tr>
+    </tbody>
 
-Vardukas
-<input type="text" [(ngModel)]="firstName" /> 
-Pavardukas
-<input type="text" [(ngModel)]="lastName" />
-Genderiukas
-<input type="text" [(ngModel)]="gender" />  
+  </table>
+</div>
 
-<button (click)="addEmployee()">Add</button> -->
-
-<p>{{title}}</p>
+<!-- <p>{{title}}</p>
 
 <ul>
     <li *ngFor = "let employee of employees">
@@ -46,4 +51,4 @@ Pavardukas
 <input type="text" [(ngModel)]="lastName" />
  
 
-<button (click)="addEmployee()">Add</button>
+<button (click)="addEmployee()">Add new employee</button> -->
