@@ -10,9 +10,10 @@
       <option  [ngValue]="1">Female</option>
       <option  [ngValue]="2">Unspecified</option>
     </select>
+    <input type="text" class="form-control" placeholder="Kompanija" [(ngModel)]="companyListId">
 
-    <button type="button" *ngIf="editMode == false" class="btn btn-dark" (click)="addEmployee()">Naujas</button>
-    <button type="button" *ngIf="editMode == true" class="btn btn-dark" (click)="sendUpdatedEmployee()">Atnaujink</button>
+    <button type="button" *ngIf="editMode == false" class="btn btn-outline-primary btn-rounded" (click)="addEmployee()">Naujas</button>
+    <button type="button" *ngIf="editMode == true" class="btn btn-warning" (click)="sendUpdatedEmployee()">Atnaujink</button>
   </div>
 </div>
 <div>
@@ -22,6 +23,7 @@
         <th>Vardukas</th>
         <th>Pavardukas</th>
         <th>Gender tipas</th>
+        <th>Kompanija</th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +31,8 @@
         <td class="bg-info">{{employee.firstName}}</td>
         <td class="bg-success">{{employee.lastName}}</td>
         <td class="bg-success">{{employee.genderType}}</td>
-        <td><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button></td>
+        <td class="bg-success">{{employee.companyListId}}</td>
+        <td><button type="button" class="btn btn-outline-danger" (click)="deleteEmployee(employee.id)">Delete</button></td>
         <td><button type="button" class="btn btn-warning" (click)="updateEmployee(employee)">Update</button></td>
       </tr>
     </tbody>

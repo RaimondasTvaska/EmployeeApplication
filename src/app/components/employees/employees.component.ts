@@ -14,7 +14,7 @@ export class EmployeesComponent implements OnInit {
   public id : number;
   public firstName : string = " ";
   public lastName : string = " ";
-  public genderType : number;
+  public genderType : string;
   public companyListId : number;
   
   
@@ -29,6 +29,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.employeesService.getAllEmployees().subscribe((employeesFromApi) =>{
       this.employees = employeesFromApi;
+      // this.employees.sort((a, b) => a.lastName.localeCompare(b.lastName))
     })
   }
 
@@ -54,7 +55,7 @@ export class EmployeesComponent implements OnInit {
     this.firstName = employee.firstName;
     this.lastName = employee.lastName;
     this.genderType = employee.genderType;
-    
+    this.companyListId = employee.companyListId;    
   }
 
   public sendUpdatedEmployee (){
@@ -66,8 +67,23 @@ export class EmployeesComponent implements OnInit {
       companyListId : this.companyListId
     }
     this.employeesService.updateEmployee(updatedEmployee).subscribe(() =>{
-      this.employees.push(updatedEmployee);
+      for (let i = 0; i < this.employees.length; i++) {
+        const emp = this.employees[i];
+        if (emp.id == updatedEmployee.id) {
+          emp.firstName = updatedEmployee.firstName;
+          emp.lastName = updatedEmployee.lastName;
+          emp.genderType = updatedEmployee.genderType;
+          emp.companyListId = updatedEmployee.companyListId;
+          return;          
+        }
+        
+      }
+      // ==============
+      // labiau sofistikuotas variantas if'o
+      // let index = this.employees.map(e => e.id).indexOf(this.id);
+      //this.employees[index] = employee;
     })
+    this.editMode = false;
   }
   
 
