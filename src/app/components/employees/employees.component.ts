@@ -19,6 +19,7 @@ export class EmployeesComponent implements OnInit {
   
   
   public employees : Employee[] = []
+  public editMode : boolean = false;
   public title : string = "Employees" 
 
   constructor(employeesService : EmployeesService) {
@@ -44,10 +45,19 @@ export class EmployeesComponent implements OnInit {
     this.employeesService.addEmployee(newEmployee).subscribe((employeeId) =>{
       newEmployee.id = employeeId;
       this.employees.push(newEmployee);
-      window.location.reload();
     })
   }
-  public updateEmployee(id:number ) {
+  public updateEmployee(employee: Employee): void {
+    this.editMode = true;
+
+    this.id = employee.id;
+    this.firstName = employee.firstName;
+    this.lastName = employee.lastName;
+    this.genderType = employee.genderType;
+    
+  }
+
+  public sendUpdatedEmployee (){
     var updatedEmployee: Employee = {
       id: this.id,
       firstName : this.firstName,
@@ -55,8 +65,8 @@ export class EmployeesComponent implements OnInit {
       genderType : this.genderType,
       companyListId : this.companyListId
     }
-    this.employeesService.updateEmployee(id, updatedEmployee).subscribe(() =>{   
-    this.employees = this.employees.filter(h => h.id !== id);
+    this.employeesService.updateEmployee(updatedEmployee).subscribe(() =>{
+      this.employees.push(updatedEmployee);
     })
   }
   

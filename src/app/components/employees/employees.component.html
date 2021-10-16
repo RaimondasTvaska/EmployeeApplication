@@ -6,12 +6,13 @@
     <input type="text" class="form-control" placeholder="Vardas" [(ngModel)]="firstName">
     <input type="text" class="form-control" placeholder="Pavardė" [(ngModel)]="lastName">
     <select [(ngModel)]="genderType">
-      <option value="0">Male</option>
-      <option value="1">Female</option>
-      <option value="2">Unspecified</option>
+      <option [ngValue]="0">Male</option>
+      <option  [ngValue]="1">Female</option>
+      <option  [ngValue]="2">Unspecified</option>
     </select>
 
-    <button type="button" class="btn btn-dark" (click)="addEmployee()">Naujas</button>
+    <button type="button" *ngIf="editMode == false" class="btn btn-dark" (click)="addEmployee()">Naujas</button>
+    <button type="button" *ngIf="editMode == true" class="btn btn-dark" (click)="sendUpdatedEmployee()">Atnaujink</button>
   </div>
 </div>
 <div>
@@ -29,7 +30,7 @@
         <td class="bg-success">{{employee.lastName}}</td>
         <td class="bg-success">{{employee.genderType}}</td>
         <td><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button></td>
-        <td><button type="button" class="btn btn-warning" (click)="updateEmployee(employee.id)">Update</button></td>
+        <td><button type="button" class="btn btn-warning" (click)="updateEmployee(employee)">Update</button></td>
       </tr>
     </tbody>
 
