@@ -29,7 +29,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.employeesService.getAllEmployees().subscribe((employeesFromApi) =>{
       this.employees = employeesFromApi;
-      // this.employees.sort((a, b) => a.lastName.localeCompare(b.lastName))
+      // this.employees.sort((a, b) => a.firstName.localeCompare(b.firstName))
     })
   }
 
@@ -71,8 +71,8 @@ export class EmployeesComponent implements OnInit {
         const emp = this.employees[i];
         if (emp.id == updatedEmployee.id) {
           emp.firstName = updatedEmployee.firstName;
-          emp.lastName = updatedEmployee.lastName;
-          emp.genderType = updatedEmployee.genderType;
+          emp.lastName = updatedEmployee.lastName;          
+          emp.genderType = updatedEmployee.genderType;          
           emp.companyListId = updatedEmployee.companyListId;
           return;          
         }
